@@ -4,11 +4,11 @@ $(document).ready(function() {
   $(".notice").html(message.message);
 
   $("li").on("click", function(event) {
+    console.log("hit")
     if (!game.over()) {
+      console.log("bash")
       var spaceIndex = parseInt($(this).attr("id"));
-
       var status = game.status(spaceIndex);
-
       if (status != "invalid") {
         renderMove(spaceIndex, game.currentPlayer());
         if (status === "win") {
@@ -24,26 +24,6 @@ $(document).ready(function() {
       } else {
         renderMessage(message, "invalidMove", null);
       }
-
-      // var result = game.move(spaceIndex);
-      // => {status: 'game won', winner: 'player 1'}
-
-      // if (game.validMove(spaceIndex)) {
-      //   game.placeMove(spaceIndex)
-      //   renderMove(spaceIndex, game.currentPlayer());
-      //   if (game.boardWin()) {
-      //     renderMessage(message, "win", game.currentPlayer())
-      //     renderWin(game);
-      //   } else if (!game.remainingMoves()) {
-      //     game.turnCount += 1;
-      //     renderMessage(message, "turn", game.currentPlayer());
-      //   } else {
-      //     renderMessage(message, "draw", null);
-      //     $(".replay").toggle();
-      //   }
-      // } else {
-      //   renderMessage(message, "invalidMove", null);
-      // }
     }
   });
 
